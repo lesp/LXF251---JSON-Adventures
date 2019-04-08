@@ -1,4 +1,5 @@
 import requests
+import unicornhat
 from geopy.geocoders import Nominatim
 from time import sleep
 geolocator = Nominatim()
@@ -22,9 +23,24 @@ while True:
     #lon = float(-3.0564845)
     print(lat, lon)
     if lat >= (home_lat -1) and lat <= (home_lat) and lon >= (home_lon -1) and lon <= (home_lon):
-        sleep(60)
         print("WARNING: ISS IS ALMOST OVERHEAD")
+        for x in range(8):
+            for y in range(8):
+                unicornhat.set_pixel(x,y,255,0,0)
+                sleep(0.01)
+                unicornhat.show()
+        sleep(15)
+        unicornhat.clear()
+        unicornhat.show()
+        sleep(45)
     else:
-        sleep(60)
         print("ISS NOT NEAR")
-		
+        for x in range(8):
+            for y in range(8):
+                unicornhat.set_pixel(x,y,0,255,0)
+                sleep(0.01)
+                unicornhat.show()
+        sleep(15)
+        unicornhat.clear()
+        unicornhat.show()
+        sleep(45)
