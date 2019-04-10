@@ -6,10 +6,8 @@ geolocator = Nominatim()
 ISS = "http://api.open-notify.org/iss-now.json"
 #My location
 home = geolocator.geocode("Blackpool UK")
-home_lat = home.latitude
-home_lat = float(home_lat)
-home_lon = home.longitude
-home_lon = float(home_lon)
+home_lat = float(home.latitude)
+home_lon = float(home.longitude)
 print("HOME")
 print(home_lat, home_lon)
 
@@ -19,6 +17,7 @@ while True:
     r = requests.get(ISS)
     lat = float(r.json()['iss_position']['latitude'])
     lon = float(r.json()['iss_position']['longitude'])
+    #Blackpool Location
     #lat = float(53.8182212)
     #lon = float(-3.0564845)
     print(lat, lon)
